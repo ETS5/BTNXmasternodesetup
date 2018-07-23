@@ -22,7 +22,7 @@ YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
 #Bitnexus TCP port
-PORT=11010
+PORT=6161
 
 #Clear keyboard input buffer
 function clear_stdin { while read -r -t 0; do read -r; done; }
