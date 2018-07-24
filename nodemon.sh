@@ -1,13 +1,5 @@
 #!/bin/bash
-# Eswede nodemon 1.1 - Bitnexus Masternode Monitoring
-#If you find this script helpful
-# ...please donate to the devfound: BTNX  **BMEfHRvfcwoPgpBgpEVERsQpipNjtFVgVL**
-# or BTC to **3H1JNkydHxDbhoXLREpxXccvyNh7Awr2jX**
-
-#...please donate BTNX to the devfound: BMEfHRvfcwoPgpBgpEVERsQpipNjtFVgVL
-
-#--ESWEDE
-
+#
 #Processing command line params
 if [ -z $1 ]; then dly=1; else dly=$1; fi   # Default refresh time is 1 sec
 
