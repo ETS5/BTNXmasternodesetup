@@ -132,14 +132,14 @@ fi
 #Installing Daemon
 cd ~
 mkdir ~/BTNXmasternodesetup/bitnexus_ubuntu1604_1.0.2.7.tar.gz
-wget https://github.com/modcrypto/bitnexus/releases/download/1.0.2.7a/bitnexus_ubuntu1604_1.0.2.7.tar.gz
-tar -xvf bitnexus_ubuntu1604_1.0.2.7.tar.gz -C ~/BTNXmasternodesetup/bitnexus_ubuntu1604_1.0.2.7.tar.gz
-rm -rf bitnexus_ubuntu1604_1.0.2.7.tar.gz
+wget https://github.com/modcrypto/bitnexus/releases/download/1.0.2.7-hotfixed/bitnexus_ubuntu1604_1.0.2.7-hotfix.tar.gz
+tar -xvf bitnexus_ubuntu1604_1.0.2.7.tar.gz -C ~/BTNXmasternodesetup/bitnexus_ubuntu1604_1.0.2.7-hotfix.tar.gz
+rm -rf bitnexus_ubuntu1604_1.0.2.7-hotfix.tar.gz
 
 stop_daemon
 
 # Deploy binaries to /usr/bin
-sudo cp BTNXmasternodesetup/bitnexus_ubuntu1604_1.0.2.7.tar.gz/bitnexus* /usr/bin/
+sudo cp BTNXmasternodesetup/bitnexus_ubuntu1604_1.0.2.7-hotfix.tar.gz/bitnexus* /usr/bin/
 sudo chmod 755 -R ~/BTNXmasternodesetup
 sudo chmod 755 /usr/bin/bitnexus*
 
