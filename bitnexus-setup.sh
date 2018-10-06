@@ -93,18 +93,47 @@ sudo service fail2ban restart
 
 sudo apt-get install ufw -y
 sudo apt-get update -y
+sudo apt-get upgrade -yet
 
 sudo apt install unzip
 
+#Network Settings
+echo -e "${GREEN}Installing Network Settings...${NC}"
+{
+sudo apt-get install ufw -y
+} &> /dev/null
+echo -ne '[##                 ]  (10%)\r'
+{
+sudo apt-get update -y
+} &> /dev/null
+echo -ne '[######             ] (30%)\r'
+{
 sudo ufw default deny incoming
+} &> /dev/null
+echo -ne '[#########          ] (50%)\r'
+{
 sudo ufw default allow outgoing
 sudo ufw allow ssh
+} &> /dev/null
+echo -ne '[###########        ] (60%)\r'
+{
 sudo ufw allow $PORT/tcp
+sudo ufw allow $RPC/tcp
+} &> /dev/null
+echo -ne '[###############    ] (80%)\r'
+{
 sudo ufw allow 22/tcp
 sudo ufw limit 22/tcp
+} &> /dev/null
+echo -ne '[#################  ] (90%)\r'
+{
 echo -e "${YELLOW}"
 sudo ufw --force enable
 echo -e "${NC}"
+} &> /dev/null
+echo -ne '[###################] (100%)\n'
+
+echo -e "${GREEN}Packages complete....${NC}"
 
 #Generating Random Password for JSON RPC
 rpcuser=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
@@ -131,16 +160,18 @@ fi
 
 #Installing Daemon
 cd ~
-sudo mkdir ~/BTNXmasternodesetup/bitnexus_ubuntu1604_1.0.2.7-hotfix.tar.gz
+mkdir bitnexus
+cd bitnexus
 sudo wget https://github.com/modcrypto/bitnexus/releases/download/1.0.2.7-hotfixed/bitnexus_ubuntu1604_1.0.2.7-hotfix.tar.gz
-sudo tar -xvf bitnexus_ubuntu1604_1.0.2.7-hotfix.tar.gz -C ~/BTNXmasternodesetup/bitnexus_ubuntu1604_1.0.2.7-hotfix.tar.gz
+sudo tar -xvf bitnexus_ubuntu1604_1.0.2.7-hotfix.tar.gz 
 sudo rm -rf bitnexus_ubuntu1604_1.0.2.7-hotfix.tar.gz
 
 stop_daemon
 
 # Deploy binaries to /usr/bin
-sudo cp BTNXmasternodesetup/bitnexus_ubuntu1604_1.0.2.7-hotfix.tar.gz/bitnexus* /usr/bin/
-sudo chmod 755 -R ~/BTNXmasternodesetup
+cd ~
+sudo cp bitnexus/bitnexus* /usr/bin/
+sudo chmod 755 -R ~/bitnexus
 sudo chmod 755 /usr/bin/bitnexus*
 
 # Deploy masternode monitoring script
