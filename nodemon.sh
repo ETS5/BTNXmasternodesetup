@@ -3,7 +3,7 @@
 #Processing command line params
 if [ -z $1 ]; then dly=1; else dly=$1; fi   # Default refresh time is 1 sec
 
-datadir="/home/$USER/.bitcoinnodecore$2"   # Default datadir is /root/.bitcoinnodecore
+datadir="/$USER/.bitcoinnodecore$2"   # Default datadir is /root/.bitcoinnodecore
  
 # Install jq if it's not present
 dpkg -s jq 2>/dev/null >/dev/null || sudo apt-get -y install jq
